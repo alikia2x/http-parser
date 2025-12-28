@@ -8,8 +8,8 @@ async function main() {
 	const distDir = "./dist";
 
 	// Clean and create dist directory
-	spawn({ cmd: ["rm", "-rf", distDir] });
-	spawn({ cmd: ["mkdir", "-p", distDir] });
+	await spawn({ cmd: ["rm", "-rf", distDir] }).exited;
+	await spawn({ cmd: ["mkdir", "-p", distDir] }).exited;
 
 	// Build JavaScript bundle with Bun
 	await build({
@@ -18,14 +18,14 @@ async function main() {
 		format: "esm",
 		minify: true,
 		outdir: distDir,
-		sourcemap: "linked",
+		sourcemap: false,
 		target: "browser",
 	});
 
 	// Generate TypeScript declaration files with tsc
-	spawn({
+	await spawn({
 		cmd: ["bun", "tsc"],
-	});
+	}).exitCode;
 
 	console.log("Build completed successfully");
 	console.log("Output directory:", distDir);

@@ -1,6 +1,6 @@
 {
     "name": "@alikia/http-parser",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "A robust, production-ready HTTP/1.x request and response parser written in TypeScript",
     "type": "module",
     "main": "./dist/index.js",
@@ -32,12 +32,7 @@
         "http1",
         "https",
         "request",
-        "response",
-        "browser",
-        "nodejs",
-        "deno",
-        "bun",
-        "workers"
+        "response"
     ],
     "author": "alikia",
     "license": "MIT",
